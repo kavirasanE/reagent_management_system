@@ -1,9 +1,18 @@
-import react from "react";
-
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Books from "./pages/Books";
+import AddBooks from "./pages/AddBooks";
+import UpdateBooks from "./pages/UpdateBooks";
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Books />} />
+          <Route path="/" element={<AddBooks />} />
+          <Route path="/" element={<UpdateBooks />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
