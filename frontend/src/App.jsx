@@ -5,6 +5,8 @@ import ReagentTable from "./pages/ReagentTable";
 import TestDone from "./pages/TestDone";
 import AboutRIS from "./pages/AboutRIS";
 import Layout from "./Layout/Layout";
+import AddStocks from "./pages/AddStocks";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -41,6 +43,22 @@ function App() {
             element={
               <Layout>
                 <AboutRIS />
+              </Layout>
+            }
+          />
+            <Route
+            path="/addstocks"
+            element={
+              <Layout>
+                <AddStocks />
+              </Layout>
+            }
+          />
+            <Route
+            path="/admin"
+            element={
+              <Layout>
+                <Admin />
               </Layout>
             }
           />

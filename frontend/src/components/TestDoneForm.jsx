@@ -36,7 +36,7 @@ const TestDoneForm = () => {
           TEST DATA FORM
         </p>
 
-        <div >
+        <div>
           <TextField
             id="outlined-select-currency"
             select
@@ -52,7 +52,7 @@ const TestDoneForm = () => {
           </TextField>
         </div>
 
-        <div className="my-4 ">
+        <div className="flex flex-col gap-y-4 my-4 ">
           <TextField
             id="outlined-number"
             // label="No of test Done Today"
@@ -63,10 +63,38 @@ const TestDoneForm = () => {
             }}
             className="w-full "
           />
+          <TextField
+            id="outlined-number"
+            // label="No of test Done Today"
+            type="number"
+            placeholder="No of Pack Used"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            className="w-full "
+          />
+          <TextField
+            id="outlined-number"
+            // label="No of test Done Today"
+            type="number"
+            placeholder="No of test/pack"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            className="w-full "
+          />
+          <button
+            className="border-2 border-black/20 
+          bg-purple-600 p-2 mx-20 rounded-xl text-white 
+          hover:scale-90 transition-transform duration-400"
+          >
+            Submit Data
+          </button>
         </div>
       </FormControl>
     </div>
   );
 };
+
 
 export default TestDoneForm;

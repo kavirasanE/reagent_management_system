@@ -1,8 +1,14 @@
 import React from 'react'
+import TableLayout from '../components/TableLayout'
 
 const TestDone = () => {
   return (
-    <div>TestDone</div>
+    <div>
+    <p className='text-center font-bold text-2xl py-5 '>Test Done Table</p>
+    <div>
+      <TableLayout/>
+    </div>
+    </div>
   )
 }
 

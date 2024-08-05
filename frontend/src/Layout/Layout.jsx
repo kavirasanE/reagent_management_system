@@ -2,7 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Modal from '@mui/material/Modal';
+import Modal from "@mui/material/Modal";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -31,17 +31,17 @@ function Layout({ props, children }) {
   const [openTestDoneForm, setOpenTestDoneForm] = React.useState(false);
 
   const handleTestDataForm = () => {
-    setOpenTestDoneForm(true)
+    setOpenTestDoneForm(true);
   };
 
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
-    border: '1px solid #000',
+    bgcolor: "background.paper",
+    border: "1px solid #000",
     boxShadow: 24,
     p: 4,
   };
@@ -82,6 +82,18 @@ function Layout({ props, children }) {
       path: "/aboutris",
     },
   ];
+  const drawerMenu1 = [
+    {
+      id: 1,
+      title: "Add Stocks",
+      path: "/addstocks",
+    },
+    {
+      id: 2,
+      title: "Admin",
+      path: "/admin",
+    },
+  ];
 
   const drawer = (
     <div>
@@ -102,18 +114,20 @@ function Layout({ props, children }) {
         ))}
       </List>
       <Divider />
-      {/* <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+      <List>
+        {drawerMenu1.map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <Link to={text.path}>
+                <ListItemText primary={text.title} />
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
-      </List> */}
+      </List>
     </div>
   );
 
@@ -129,7 +143,6 @@ function Layout({ props, children }) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "#BF40BF",
         }}
       >
         <Toolbar>
@@ -154,24 +167,23 @@ function Layout({ props, children }) {
             </Typography>
             <button
               onClick={handleTestDataForm}
-              className="p-2 drop-shadow-xl shadow-xl bg-white text-black hover:scale-95 font-bold rounded-sm"
+              className="p-2 drop-shadow-xl shadow-xl bg-gray-200 text-black hover:scale-95 font-bold rounded-sm"
             >
-             Test Data Form
+              Test Data Form
             </button>
           </div>
           <div>
-          <Modal
-            open={openTestDoneForm}
-            onClose={() => setOpenTestDoneForm(false)}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style} >
-             <TestDoneForm/>
-            </Box>
-          </Modal>
+            <Modal
+              open={openTestDoneForm}
+              onClose={() => setOpenTestDoneForm(false)}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <TestDoneForm />
+              </Box>
+            </Modal>
           </div>
-         
         </Toolbar>
       </AppBar>
       <Box

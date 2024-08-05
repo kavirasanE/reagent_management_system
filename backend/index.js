@@ -1,5 +1,4 @@
 import express from "express";
-
 import cors from "cors"
 import dbConfig from "./dbConfig.js";
 const app = express();
