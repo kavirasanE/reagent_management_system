@@ -20,6 +20,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import TestDoneForm from "../components/TestDoneForm";
+import ReagentLogo from "../assets/logo.png"
 
 const drawerWidth = 200;
 
@@ -64,7 +65,7 @@ function Layout({ props, children }) {
     {
       id: 1,
       title: "Dashboard",
-      path: "/dasboard",
+      path: "/",
     },
     {
       id: 2,
@@ -160,10 +161,10 @@ function Layout({ props, children }) {
               variant="h5"
               noWrap
               component="div"
-              fontWeight="bold"
+              fontWeight="semibold"
               textAlign="center"
             >
-              Reagent Inventory System
+              Reagent Inventory Management System
             </Typography>
             <button
               onClick={handleTestDataForm}
@@ -218,11 +219,14 @@ function Layout({ props, children }) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              marginTop:"5px"
             },
           }}
           open
         >
-          <p className="absolute top-5 left-20 font-bold text-xl">RIS</p>
+          <p className="absolute font-bold text-xl">
+          <img src={ReagentLogo} className="w-40 h-20 object-cover mb-2 "/>
+          </p>
           {drawer}
         </Drawer>
       </Box>

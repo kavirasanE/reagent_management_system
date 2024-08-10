@@ -1,28 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-
 import axios from "axios";
+import { DataContext } from "../../DataContext/DataProvider";
 
-const AddStocksForm = () => {
-  const options = ["Glucose", "analyte2", "analyte3", "analyte4"];
 
-  const [inputValue, setInputValue] = useState(options[0]);
+const EditReagentDataForm = () => {
+  const { ReagentTableRowNo, ReagentTableData } = useContext(DataContext);
+  console.log(ReagentTableData);
+  console.log(ReagentTableRowNo);
+
+  let Rownumber = parseInt(ReagentTableRowNo.trim(), 10) - 1;
+  console.log(Rownumber);
 
   const [reagentData, setReagentData] = useState({
-    Reagent_Name: "",
-    Lot_No: "",
-    Expiry_Date: null,
-    No_of_Available_Packs: "",
-    Stocks_Avaliable: "",
-    new_stock: "",
-    Technician_Name: "",
+    Reagent_Name: ReagentTableData[Rownumber].Reagent_Name,
+    Lot_No: ReagentTableData[Rownumber].Lot_No,
+    Expiry_Date: ReagentTableData[Rownumber].Expiry_Date,
+    No_of_Available_Packs: ReagentTableData[Rownumber].No_of_Available_Packs,
+    Stocks_Avaliable: ReagentTableData[Rownumber].Stocks_Avaliable,
+    new_stock: ReagentTableData[Rownumber].new_stock,
+    Technician_Name: ReagentTableData[Rownumber].Technician_Name,
   });
 
   const handleReagentDataChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    console.log(e);
     console.log(value);
     setReagentData((prev) => ({
       ...prev,
@@ -30,23 +33,11 @@ const AddStocksForm = () => {
     }));
   };
 
-  const handleReagentSubmit = async (e) => {
-    e.preventDefault();
-    console.log(reagentData);
-    console.log(inputValue);
-    // if (reagentData.Analyte == null) {
-    //   setReagentData((prev) => ({
-    //     ...prev,
-    //     ["Analyte"]: inputValue,
-    //   }));
-    // }
+  const options = ["Glucose", "analyte2", "analyte3", "analyte4"];
 
-    try {
-      await axios.post("http://localhost:9800/api/createreagent", reagentData);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const [inputValue, setInputValue] = useState(
+    ReagentTableData[Rownumber].Analyte
+  );
 
   // useEffect(() => {
   //   setReagentData((prev) => ({
@@ -54,8 +45,26 @@ const AddStocksForm = () => {
   //     ["Analyte"]: inputValue,
   //   }));
   // }, [inputValue]);
+
+  const handleReagentSubmit = async (e) => {
+    e.preventDefault();
+    console.log(reagentData);
+    try {
+      const ReagentEditData = await axios.put(
+        `http://localhost:9800/api/updatereagent/${Rownumber + 1}`,
+        reagentData
+      );
+      if (ReagentEditData) {
+        console.log("edited done");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
+      <p className="font-bold text-3xl text-center">Edit Reagent Form</p>
       <div className="grid md:grid-cols-2 justify-between items-center gap-10 p-4 ">
         <p className="flex justify-center items-center gap-4 ">
           <label className="text-ls font-bold uppercase w-20">Analyte</label>
@@ -72,7 +81,10 @@ const AddStocksForm = () => {
             options={options}
             sx={{ width: 300 }}
             renderInput={(params) => (
-              <TextField {...params} label="Controllable" name="Analyte" />
+              <TextField
+                {...params}
+                label={ReagentTableData[Rownumber].Analyte}
+              />
             )}
           />
         </p>
@@ -115,13 +127,6 @@ const AddStocksForm = () => {
             value={reagentData.Expiry_Date}
             onChange={(date) => handleReagentDataChange(date)}
           />
-          {/* <DatePicker
-            label="Select your Date"
-            className="w-80" 
-            name="Expiry_Date"
-            value={value}
-            onChange={(date) => handleExpiryDateChange(date)}
-          /> */}
         </p>
         <p className="flex justify-center items-center gap-4 ">
           <label className="text-ls font-bold uppercase w-20">
@@ -186,11 +191,11 @@ const AddStocksForm = () => {
           className="bg-red-500 text-white p-3 w-40 rounded-lg"
           onClick={handleReagentSubmit}
         >
-          Add To Submit
+          Edit Data
         </button>
       </div>
     </>
   );
 };
 
-export default AddStocksForm;
+export default EditReagentDataForm;

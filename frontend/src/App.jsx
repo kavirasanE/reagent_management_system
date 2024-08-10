@@ -7,15 +7,16 @@ import AboutRIS from "./pages/AboutRIS";
 import Layout from "./Layout/Layout";
 import AddStocks from "./pages/AddStocks";
 import Admin from "./pages/Admin";
+import EditReagentDataForm from "./components/Reagent/EditReagentDataForm";
+import UsageDetails from "./components/Reagent/UsageDetails";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />} />
           <Route
-            path="/dasboard"
+            path="/"
             element={
               <Layout>
                 <DashBoard />
@@ -46,7 +47,7 @@ function App() {
               </Layout>
             }
           />
-            <Route
+          <Route
             path="/addstocks"
             element={
               <Layout>
@@ -54,11 +55,27 @@ function App() {
               </Layout>
             }
           />
-            <Route
+          <Route
             path="/admin"
             element={
               <Layout>
                 <Admin />
+              </Layout>
+            }
+          />
+          <Route
+            path="/editreagent"
+            element={
+              <Layout>
+                <EditReagentDataForm />
+              </Layout>
+            }
+          />
+          <Route
+            path="/usagedetails"
+            element={
+              <Layout>
+                <UsageDetails />
               </Layout>
             }
           />

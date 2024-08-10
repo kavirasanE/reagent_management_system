@@ -1,15 +1,17 @@
-import React from 'react'
-import TableLayout from '../TableLayout'
+import React, { useContext, useEffect, useState } from "react";
+import TableLayout from "../TableLayout";
 
-
+import { DataContext } from "../../DataContext/DataProvider";
 const ReagentTableComponent = () => {
+  const {ReagentTableData} = useContext(DataContext);  
+  
   return (
     <div>
-     <div>
-     <TableLayout/>
+      <div>
+        <TableLayout ReagentTableData={ReagentTableData} />
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default ReagentTableComponent
+export default ReagentTableComponent;
