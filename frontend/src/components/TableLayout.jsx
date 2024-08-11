@@ -23,16 +23,13 @@ const columns = [
   },
 ];
 
-export default function TableLayout({ ReagentTableData }) {
-  const { setReagentTableRowNo } = useContext(DataContext);
-
-  console.log(ReagentTableData, "reagent Table");
-
+export default function TableLayout() {
+  const {ReagentTableData, setReagentTableRowNo } = useContext(DataContext);
+  
   const handleRowSelect = (e) => {
     const rowNo = e.toString();
     setReagentTableRowNo(rowNo);
   };
-  
 
   return (
     <div style={{ height: "100%", width: "100%", color: "black" }}>

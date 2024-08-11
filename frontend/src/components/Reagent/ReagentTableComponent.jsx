@@ -3,8 +3,8 @@ import TableLayout from "../TableLayout";
 
 import { DataContext } from "../../DataContext/DataProvider";
 const ReagentTableComponent = () => {
-  const {ReagentTableData} = useContext(DataContext);  
-  
+  const { ReagentTableData } = useContext(DataContext);
+
   return (
     <div>
       <div>

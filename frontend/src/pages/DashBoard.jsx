@@ -10,9 +10,9 @@ const DashBoard = () => {
         <DashboardFunctions />
         <DashboardData/>  
       </div>
-      <div>
+      {/* <div>
         <DashboardTable />
-      </div>
+      </div> */}
     </div>
   );
 };

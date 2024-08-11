@@ -9,6 +9,7 @@ import AddStocks from "./pages/AddStocks";
 import Admin from "./pages/Admin";
 import EditReagentDataForm from "./components/Reagent/EditReagentDataForm";
 import UsageDetails from "./components/Reagent/UsageDetails";
+import UsageForm from "./components/Reagent/UsageForm";
 
 function App() {
   return (
@@ -76,6 +77,14 @@ function App() {
             element={
               <Layout>
                 <UsageDetails />
+              </Layout>
+            }
+          />
+           <Route
+            path="/usageform"
+            element={
+              <Layout>
+                <UsageForm />
               </Layout>
             }
           />

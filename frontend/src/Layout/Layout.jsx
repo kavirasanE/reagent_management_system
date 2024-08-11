@@ -20,7 +20,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import TestDoneForm from "../components/TestDoneForm";
-import ReagentLogo from "../assets/logo.png"
+import ReagentLogo from "../assets/logo.png";
 
 const drawerWidth = 200;
 
@@ -79,10 +79,11 @@ function Layout({ props, children }) {
     },
     {
       id: 4,
-      title: "About RIS",
+      title: "About RIMS",
       path: "/aboutris",
     },
   ];
+
   const drawerMenu1 = [
     {
       id: 1,
@@ -102,31 +103,31 @@ function Layout({ props, children }) {
       <Divider />
       <List>
         {drawerMenu.map((text, index) => (
-          <ListItem key={text.id} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <Link to={text.path}>
+          <Link to={text.path} className="flex w-full">
+            <ListItem key={text.id} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
                 <ListItemText primary={text.title} />
-              </Link>
-            </ListItemButton>
-          </ListItem>
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
       <Divider />
       <List>
         {drawerMenu1.map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <Link to={text.path}>
+          <Link to={text.path}>
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
                 <ListItemText primary={text.title} />
-              </Link>
-            </ListItemButton>
-          </ListItem>
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </div>
@@ -156,7 +157,7 @@ function Layout({ props, children }) {
           >
             <MenuIcon />
           </IconButton>
-          <div className="flex   justify-between items-center gap-40">
+          <div className="flex justify-between items-center w-full px-5 ">
             <Typography
               variant="h5"
               noWrap
@@ -166,12 +167,14 @@ function Layout({ props, children }) {
             >
               Reagent Inventory Management System
             </Typography>
-            <button
-              onClick={handleTestDataForm}
-              className="p-2 drop-shadow-xl shadow-xl bg-gray-200 text-black hover:scale-95 font-bold rounded-sm"
-            >
-              Test Data Form
-            </button>
+            <Link to="/usageform">
+              <button
+                // onClick={handleTestDataForm}
+                className="p-2 drop-shadow-xl shadow-xl bg-gray-200 text-black hover:scale-95 font-bold rounded-sm "
+              >
+                Usage Form
+              </button>
+            </Link>
           </div>
           <div>
             <Modal
@@ -219,13 +222,13 @@ function Layout({ props, children }) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              marginTop:"5px"
+              marginTop: "5px",
             },
           }}
           open
         >
           <p className="absolute font-bold text-xl">
-          <img src={ReagentLogo} className="w-40 h-20 object-cover mb-2 "/>
+            <img src={ReagentLogo} className="w-40 h-20 object-cover mb-2 " />
           </p>
           {drawer}
         </Drawer>
