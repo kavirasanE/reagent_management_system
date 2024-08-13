@@ -4,7 +4,7 @@ import axios from "axios";
 import { DataContext } from "../DataContext/DataProvider";
 
 const columns = [
-  { field: "id", headerName: "S.NO", width: 70 },
+  { field: "ReagentId", headerName: "S.NO", width: 70 },
   { field: "Analyte", headerName: "Analyte", width: 130 },
   { field: "Reagent_Name", headerName: "Reagent Name", width: 170 },
   { field: "Technician_Name", headerName: "Technician Name", width: 170 },
@@ -22,7 +22,7 @@ const columns = [
 
 export default function TableLayout() {
   const { ReagentTableData, setReagentTableRowNo } = useContext(DataContext);
-
+  console.log(ReagentTableData)
   const handleRowSelect = (e) => {
     const rowNo = e.toString();
     setReagentTableRowNo(rowNo);

@@ -2,7 +2,7 @@ import asyncHandler from "express-async-handler";
 import dbConfig from "../dbConfig.js";
 
 const createReagentTableData = (req, res) => {
-  console.log("sdvjbsvjn");
+ 
   const currentdate = new Date();
   const query =
     " insert into reagentdata (`Analyte`, `Reagent_Name`, `Lot_No` ,`Expiry_Date`,`Stocks_Avaliable`, `new_stock`, `Technician_Name`, `currentdate`) values (?)";

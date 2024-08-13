@@ -104,7 +104,7 @@ const EditReagentDataForm = () => {
           <label className="text-sm font-semibold uppercase ">Lot No</label>
           <TextField
             id="lot-no"
-            type="number"
+            type="text"
             label="Lot Number"
             variant="outlined"
             size="small"
@@ -185,6 +185,21 @@ const EditReagentDataForm = () => {
             name="Technician_Name"
             value={reagentData.Technician_Name}
             onChange={(e) => handleReagentDataChange(e)}
+          />
+        </p>
+        <p className="flex justify-between items-center gap-4">
+          <label className="text-sm font-semibold uppercase ">
+           Current Date
+          </label>
+          <TextField
+            disabled
+            id="technician-name"
+            label="TimeStamp"
+            variant="outlined"
+            size="small"
+            className=""
+            name="Technician_Name"
+            value={new Date()}
           />
         </p>
       </div>

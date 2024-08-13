@@ -26,8 +26,8 @@ const AddStocksForm = () => {
     Reagent_Name: "",
     Lot_No: "",
     Expiry_Date: "",
-    Stocks_Avaliable: "",
-    new_stock: "",
+    Stocks_Avaliable: 0,
+    new_stock: 0,
     Technician_Name: "",
   });
 
@@ -44,14 +44,15 @@ const AddStocksForm = () => {
 
   const handleReagentSubmit = async (e) => {
     e.preventDefault();
+      reagentData.Stocks_Avaliable = reagentData.new_stock
+
+    
     console.log(reagentData);
     console.log(inputValue);
-    // if (reagentData.Analyte == null) {
-    //   setReagentData((prev) => ({
-    //     ...prev,
-    //     ["Analyte"]: inputValue,
-    //   }));
-    // }
+    // setReagentData({
+    //   ...reagentData,
+    //   [reagentData.Stocks_Avaliable]: reagentData.new_stock,
+    // });
 
     try {
       await axios.post("http://localhost:9800/api/createreagent", reagentData);
@@ -115,7 +116,7 @@ const AddStocksForm = () => {
           <label className="font-semibold text-sm uppercase ">Lot No</label>
           <TextField
             id="lot-no"
-            type="number"
+            type="text"
             label="Lot Number"
             variant="outlined"
             size="small"
