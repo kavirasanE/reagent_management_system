@@ -5,17 +5,27 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const AddStocksForm = () => {
-  const options = ["Glucose", "analyte2", "analyte3", "analyte4"];
+  const options = [
+    "Glucose",
+    "Cholesterol",
+    "Triglycerides",
+    "Urea",
+    "Creatinine",
+    "Bilirubin",
+    "Albumin",
+    "Total Protein",
+    "Calcium",
+    "Sodium",
+  ];
 
   const [inputValue, setInputValue] = useState(options[0]);
-
-  const navigate = useNavigate()
+  let currentData = new Date();
+  const navigate = useNavigate();
 
   const [reagentData, setReagentData] = useState({
     Reagent_Name: "",
     Lot_No: "",
-    Expiry_Date: null,
-    No_of_Available_Packs: "",
+    Expiry_Date: "",
     Stocks_Avaliable: "",
     new_stock: "",
     Technician_Name: "",
@@ -45,8 +55,8 @@ const AddStocksForm = () => {
 
     try {
       await axios.post("http://localhost:9800/api/createreagent", reagentData);
-      if(reagentData) {
-        navigate("/reagenttable")
+      if (reagentData) {
+        navigate("/reagenttable");
       }
     } catch (err) {
       console.log(err);
@@ -61,9 +71,8 @@ const AddStocksForm = () => {
   // }, [inputValue]);
   return (
     <>
-      
       <div className="grid md:grid-cols-2 justify-between items-center gap-10 p-4 ">
-        <p className="flex justify-between items-center  ">
+        <div className="flex justify-between items-center  ">
           <label className="font-semibold text-sm uppercase ">Analyte</label>
           <Autocomplete
             inputValue={inputValue}
@@ -79,11 +88,15 @@ const AddStocksForm = () => {
             options={options}
             sx={{ width: 220 }}
             renderInput={(params) => (
-              <TextField {...params} label="Controllable" name="Analyte" />
+              <TextField
+                {...params}
+                label="Select the Reagent"
+                name="Analyte"
+              />
             )}
           />
-        </p>
-        <p className="flex justify-between items-center gap-4 ">
+        </div>
+        <div className="flex justify-between items-center gap-4 ">
           <label className="font-semibold text-sm uppercase ">
             Reagent Name
           </label>
@@ -97,8 +110,8 @@ const AddStocksForm = () => {
             value={reagentData.Reagent_Name}
             onChange={(e) => handleReagentDataChange(e)}
           />
-        </p>
-        <p className="flex justify-between items-center gap-4">
+        </div>
+        <div className="flex justify-between items-center gap-4">
           <label className="font-semibold text-sm uppercase ">Lot No</label>
           <TextField
             id="lot-no"
@@ -110,16 +123,15 @@ const AddStocksForm = () => {
             value={reagentData.Lot_No}
             onChange={(e) => handleReagentDataChange(e)}
           />
-        </p>
-        <p className="flex justify-between items-center gap-4">
+        </div>
+        <div className="flex justify-between items-center gap-4">
           <label className="font-semibold text-sm uppercase ">
             Expiry Date
           </label>
           <input
             type="date"
             name="Expiry_Date"
-           className="border border-black/30 rounded-md p-1.5 w-56"
-
+            className="border border-black/30 rounded-md p-1.5 w-56"
             value={reagentData.Expiry_Date}
             onChange={(date) => handleReagentDataChange(date)}
           />
@@ -130,23 +142,8 @@ const AddStocksForm = () => {
             value={value}
             onChange={(date) => handleExpiryDateChange(date)}
           /> */}
-        </p>
-        <p className="flex justify-between items-center gap-4 ">
-          <label className="font-semibold text-sm uppercase ">
-            No of Available Packs
-          </label>
-          <TextField
-            id="available-packs"
-            type="number"
-            label="Available Packs"
-            size="small"
-            variant="outlined"
-            name="No_of_Available_Packs"
-            value={reagentData.No_of_Available_Packs}
-            onChange={(e) => handleReagentDataChange(e)}
-          />
-        </p>
-        <p className="flex justify-between items-center gap-4">
+        </div>
+        {/* <div className="flex justify-between items-center gap-4">
           <label className="font-semibold text-sm uppercase ">
             Stocks Available
           </label>
@@ -160,8 +157,9 @@ const AddStocksForm = () => {
             value={reagentData.Stocks_Avaliable}
             onChange={(e) => handleReagentDataChange(e)}
           />
-        </p>
-        <p className="flex justify-between items-center gap-4">
+        </div> */}
+
+        <div className="flex justify-between items-center gap-4">
           <label className="font-semibold text-sm uppercase ">New Stock</label>
           <TextField
             id="new-stock"
@@ -173,8 +171,8 @@ const AddStocksForm = () => {
             value={reagentData.new_stock}
             onChange={(e) => handleReagentDataChange(e)}
           />
-        </p>
-        <p className="flex justify-between items-center gap-4">
+        </div>
+        <div className="flex justify-between items-center gap-4">
           <label className="font-semibold text-sm uppercase ">
             Technician Name
           </label>
@@ -187,12 +185,26 @@ const AddStocksForm = () => {
             value={reagentData.Technician_Name}
             onChange={(e) => handleReagentDataChange(e)}
           />
-        </p>
+        </div>
+        <div className="flex justify-between items-center gap-4">
+          <label className="font-semibold text-sm uppercase ">
+            Current Date
+          </label>
+          <TextField
+            disabled
+            id="filled-disabled"
+            label="TimeStamp"
+            size="small"
+            defaultValue={currentData}
+            variant="filled"
+          />
+        </div>
       </div>
       <div className="flex items-center justify-center my-5">
-        <button 
-        onClick={handleReagentSubmit}
-        className="bg-green-500 text-white p-2 w-40 rounded-lg hover:scale-95 transition-transform duration-100 ease-in-out">
+        <button
+          onClick={handleReagentSubmit}
+          className="bg-green-500 text-white p-2 w-40 rounded-lg hover:scale-95 transition-transform duration-100 ease-in-out"
+        >
           Add to Inventory
         </button>
       </div>
@@ -201,3 +213,21 @@ const AddStocksForm = () => {
 };
 
 export default AddStocksForm;
+
+{
+  /* <div className="flex justify-between items-center gap-4 ">
+<label className="font-semibold text-sm uppercase ">
+  No of Available Packs
+</label>
+<TextField
+  id="available-packs"
+  type="number"
+  label="Available Packs"
+  size="small"
+  variant="outlined"
+  name="No_of_Available_Packs"
+  value={reagentData.No_of_Available_Packs}
+  onChange={(e) => handleReagentDataChange(e)}
+/>
+</div> */
+}

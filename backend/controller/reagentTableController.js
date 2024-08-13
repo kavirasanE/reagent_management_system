@@ -16,6 +16,7 @@ const createReagentTableData = (req, res) => {
     req.body.Technician_Name,
     currentdate, // Added currentdate based on column list
   ];
+  
   console.log(values);
 
   dbConfig.query(query, [values], (err, data) => {

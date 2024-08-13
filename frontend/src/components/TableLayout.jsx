@@ -16,16 +16,13 @@ const columns = [
     width: 170,
   },
   { field: "noOfPacksUsed", headerName: "No of Packs Used", width: 170 },
-  {
-    field: "noOfRemainingStocks",
-    headerName: "No of Remaining Stocks",
-    width: 170,
-  },
+  { field: "currentdate", headerName: "Date & Time", width: 170 },
+
 ];
 
 export default function TableLayout() {
-  const {ReagentTableData, setReagentTableRowNo } = useContext(DataContext);
-  
+  const { ReagentTableData, setReagentTableRowNo } = useContext(DataContext);
+
   const handleRowSelect = (e) => {
     const rowNo = e.toString();
     setReagentTableRowNo(rowNo);

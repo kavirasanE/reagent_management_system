@@ -12,4 +12,7 @@ Reagentrouter.post("/createreagent", createReagentTableData)
   .get("/getreagent", getReagentTableData)
   .put("/updatereagent/:id", UpdateReagentTableData);
 
+
+
+
 export default Reagentrouter;

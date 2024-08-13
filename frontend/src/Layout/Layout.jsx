@@ -19,7 +19,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import TestDoneForm from "../components/TestDoneForm";
 import ReagentLogo from "../assets/logo.png";
 
 const drawerWidth = 200;
@@ -103,7 +102,7 @@ function Layout({ props, children }) {
       <Divider />
       <List>
         {drawerMenu.map((text, index) => (
-          <Link to={text.path} className="flex w-full">
+          <Link to={text.path} className="flex w-full" key={index}>
             <ListItem key={text.id} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -118,7 +117,7 @@ function Layout({ props, children }) {
       <Divider />
       <List>
         {drawerMenu1.map((text, index) => (
-          <Link to={text.path}>
+          <Link to={text.path} key={index}>
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -175,18 +174,6 @@ function Layout({ props, children }) {
                 Usage Form
               </button>
             </Link>
-          </div>
-          <div>
-            <Modal
-              open={openTestDoneForm}
-              onClose={() => setOpenTestDoneForm(false)}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <Box sx={style}>
-                <TestDoneForm />
-              </Box>
-            </Modal>
           </div>
         </Toolbar>
       </AppBar>

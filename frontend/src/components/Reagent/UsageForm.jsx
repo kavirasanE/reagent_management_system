@@ -156,7 +156,7 @@ const UsageForm = () => {
             onChange={(e) => handleReagentDataChange(e)}
           />
         </p>
-        <p className="flex justify-between items-center gap-4">
+        {/* <p className="flex justify-between items-center gap-4">
           <label className="font-semibold text-sm uppercase ">New Stock</label>
           <TextField
             id="new-stock"
@@ -168,7 +168,7 @@ const UsageForm = () => {
             value={reagentData.new_stock}
             onChange={(e) => handleReagentDataChange(e)}
           />
-        </p>
+        </p> */}
         <p className="flex justify-between items-center gap-4">
           <label className="font-semibold text-sm uppercase ">
             Technician Name

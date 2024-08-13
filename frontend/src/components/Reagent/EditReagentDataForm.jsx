@@ -126,22 +126,22 @@ const EditReagentDataForm = () => {
             onChange={(date) => handleReagentDataChange(date)}
           />
         </p>
-        <p className="flex justify-between items-center gap-4 ">
-          <label className="text-sm font-semibold uppercase ">
-            No of Available Packs
-          </label>
-          <TextField
-            id="available-packs"
-            type="number"
-            label="Available Packs"
-            variant="outlined"
-            size="small"
-            className=""
-            name="No_of_Available_Packs"
-            value={reagentData.No_of_Available_Packs}
-            onChange={(e) => handleReagentDataChange(e)}
-          />
-        </p>
+          {/* <p className="flex justify-between items-center gap-4 ">
+            <label className="text-sm font-semibold uppercase ">
+              No of Available Packs
+            </label>
+            <TextField
+              id="available-packs"
+              type="number"
+              label="Available Packs"
+              variant="outlined"
+              size="small"
+              className=""
+              name="No_of_Available_Packs"
+              value={reagentData.No_of_Available_Packs}
+              onChange={(e) => handleReagentDataChange(e)}
+            />
+          </p> */}
         <p className="flex justify-between items-center gap-4">
           <label className="text-sm font-semibold uppercase ">
             Stocks Available

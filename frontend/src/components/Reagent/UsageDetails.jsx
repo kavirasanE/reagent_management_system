@@ -1,14 +1,17 @@
-import React, { useContext } from 'react'
-import { DataContext } from '../../DataContext/DataProvider'
+import React, { useContext } from "react";
+import { DataContext } from "../../DataContext/DataProvider";
 
 const UsageDetails = () => {
   const { ReagentTableRowNo, ReagentTableData } = useContext(DataContext);
-  
-  const data = ReagentTableData[ReagentTableRowNo-1] || {};
+
+  const data = ReagentTableData[ReagentTableRowNo - 1] || {};
 
   return (
     <div className="p-4 bg-gray-100 rounded-lg shadow-md">
+      {/* Use a heading instead of <p> for title */}
       <h2 className="text-xl font-bold mb-4">Usage Details</h2>
+      
+      {/* Use div for layout instead of wrapping in <p> */}
       <div className="space-y-2">
         <div className="flex justify-center px-20 gap-4">
           <span className="font-semibold">ID:</span>
@@ -44,7 +47,7 @@ const UsageDetails = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default UsageDetails;
