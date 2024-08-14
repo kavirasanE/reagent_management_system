@@ -24,7 +24,7 @@ const UsageForm = () => {
     Reagent_Name: ReagentTableData[Rownumber].Reagent_Name,
     Lot_No: ReagentTableData[Rownumber].Lot_No,
     Expiry_Date: ReagentTableData[Rownumber].Expiry_Date,
-    Stocks_Avaliable: ReagentTableData[Rownumber].Stocks_Avaliable,
+    Stocks_Available: ReagentTableData[Rownumber].Stocks_Available,
     No_of_Packs_Needed: 0,
     Technician_Name: "",
   });
@@ -59,7 +59,7 @@ const UsageForm = () => {
   return (
     <div className="p-3 rounded-xl">
       <p className="font-bold text-3xl text-center underline py-2">
-        Edit Reagent Form
+      Usage Form 
       </p>
       <div className="grid md:grid-cols-2 justify-between items-center gap-10 p-4 ">
         <p className="flex justify-between items-center gap-4 ">
@@ -140,8 +140,8 @@ const UsageForm = () => {
             type="number"
             variant="outlined"
             size="small"
-            name="Stocks_Avaliable"
-            value={reagentData.Stocks_Avaliable}
+            name="Stocks_Available"
+            value={reagentData.Stocks_Available}
           />
         </p>
         <p className="flex justify-between items-center gap-4">
@@ -215,7 +215,7 @@ export default UsageForm;
 //     Lot_No: "",
 //     Expiry_Date: null,
 //     No_of_Available_Packs: "",
-//     Stocks_Avaliable: "",
+//     Stocks_Available: "",
 //     new_stock: "",
 //     Technician_Name: "",
 //   });
@@ -336,8 +336,8 @@ export default UsageForm;
 //             size="small"
 //             type="number"
 //             variant="outlined"
-//             name="Stocks_Avaliable"
-//             value={reagentData.Stocks_Avaliable}
+//             name="Stocks_Available"
+//             value={reagentData.Stocks_Available}
 //             onChange={(e) => handleReagentDataChange(e)}
 //           />
 //         </p>

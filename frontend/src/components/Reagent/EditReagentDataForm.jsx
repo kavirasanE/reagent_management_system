@@ -25,10 +25,11 @@ const EditReagentDataForm = () => {
     Lot_No: ReagentTableData[Rownumber].Lot_No,
     Expiry_Date: ReagentTableData[Rownumber].Expiry_Date,
     No_of_Available_Packs: ReagentTableData[Rownumber].No_of_Available_Packs,
-    Stocks_Avaliable: ReagentTableData[Rownumber].Stocks_Avaliable,
+    Stocks_Available: ReagentTableData[Rownumber].Stocks_Available,
     new_stock: ReagentTableData[Rownumber].new_stock,
     Technician_Name: ReagentTableData[Rownumber].Technician_Name,
   });
+  
 
   const handleReagentDataChange = (e) => {
     e.preventDefault();
@@ -153,8 +154,8 @@ const EditReagentDataForm = () => {
             variant="outlined"
             size="small"
             className=""
-            name="Stocks_Avaliable"
-            value={reagentData.Stocks_Avaliable}
+            name="Stocks_Available"
+            value={reagentData.Stocks_Available}
             onChange={(e) => handleReagentDataChange(e)}
           />
         </p>

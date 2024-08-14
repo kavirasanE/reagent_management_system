@@ -1,7 +1,7 @@
 import dbConfig from "../dbConfig.js";
 
 const createUsageTableData = (req, res) => {
-
+  
   console.log(req.body,"from createUsageTableData")
   const currentdate = new Date();
   const query =
@@ -11,7 +11,7 @@ const createUsageTableData = (req, res) => {
     req.body.Reagent_Name,
     req.body.Lot_No,
     req.body.Expiry_Date,
-    req.body.Stocks_Avaliable,
+    req.body.Stocks_Available,
     req.body.No_of_Packs_Needed,
     req.body.Technician_Name,
     currentdate

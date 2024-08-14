@@ -4,14 +4,14 @@ import axios from "axios";
 import { DataContext } from "../DataContext/DataProvider";
 
 const columns = [
-  { field: "ReagentId", headerName: "S.NO", width: 70 },
+  { field: "id", headerName: "S.NO", width: 70 },
   { field: "Analyte", headerName: "Analyte", width: 130 },
   { field: "Reagent_Name", headerName: "Reagent Name", width: 170 },
   { field: "Technician_Name", headerName: "Technician Name", width: 170 },
   { field: "Lot_No", headerName: "Lot No", width: 130 },
   { field: "Expiry_Date", headerName: "Expiry Date", width: 130 },
   {
-    field: "Stocks_Avaliable",
+    field: "Stocks_Available",
     headerName: "No of Available Packs",
     width: 170,
   },

@@ -26,7 +26,7 @@ const AddStocksForm = () => {
     Reagent_Name: "",
     Lot_No: "",
     Expiry_Date: "",
-    Stocks_Avaliable: 0,
+    Stocks_Available: 0,
     new_stock: 0,
     Technician_Name: "",
   });
@@ -44,7 +44,7 @@ const AddStocksForm = () => {
 
   const handleReagentSubmit = async (e) => {
     e.preventDefault();
-      reagentData.Stocks_Avaliable = reagentData.new_stock
+      reagentData.Stocks_Available = reagentData.new_stock
 
     
     console.log(reagentData);
