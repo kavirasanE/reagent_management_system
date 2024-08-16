@@ -15,8 +15,8 @@ const columns = [
     headerName: "No of Available Packs",
     width: 170,
   },
-  { field: "noOfPacksUsed", headerName: "No of Packs Used", width: 170 },
-  { field: "currentdate", headerName: "Date & Time", width: 170 },
+  { field: "No_of_Packs_Needed", headerName: "No of Packs Used", width: 170 },
+  { field: "CurrentDate", headerName: "Date & Time", width: 170 },
 
 ];
 

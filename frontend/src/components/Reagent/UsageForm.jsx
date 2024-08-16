@@ -29,6 +29,7 @@ const UsageForm = () => {
     Technician_Name: "",
   });
 
+
   const handleReagentDataChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -42,7 +43,14 @@ const UsageForm = () => {
   const handleReagentSubmit = async (e) => {
     e.preventDefault();
     console.log(reagentData);
+       if(reagentData.No_of_Packs_Needed > reagentData.Stocks_Available) {
+        alert("Packs is not Available in the inventory ")
+        return
+       }else{
+        reagentData.Stocks_Available = reagentData.Stocks_Available - reagentData.No_of_Packs_Needed
+       }
     try {
+      
       const ReagentEditData = await axios.post(
         "http://localhost:9800/api/createusageform",
         reagentData
@@ -59,7 +67,7 @@ const UsageForm = () => {
   return (
     <div className="p-3 rounded-xl">
       <p className="font-bold text-3xl text-center underline py-2">
-      Usage Form 
+        Usage Form
       </p>
       <div className="grid md:grid-cols-2 justify-between items-center gap-10 p-4 ">
         <p className="flex justify-between items-center gap-4 ">
@@ -157,7 +165,9 @@ const UsageForm = () => {
             className=""
             name="No_of_Packs_Needed"
             value={reagentData.No_of_Packs_Needed}
-            onChange={(e) => handleReagentDataChange(e)}
+            onChange={(e) => {
+              handleReagentDataChange(e);
+            }}
           />
         </p>
         <p className="flex justify-between items-center gap-4">

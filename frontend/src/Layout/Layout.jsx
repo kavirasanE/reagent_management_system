@@ -164,7 +164,7 @@ function Layout({ props, children }) {
               fontWeight="semibold"
               textAlign="center"
             >
-              Reagent Inventory Management System    unique key is Lot No   
+              Reagent Inventory Management System 
             </Typography>
             <Link to="/usageform">
               <button
