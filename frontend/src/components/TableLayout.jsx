@@ -13,7 +13,7 @@ const columns = [
     headerName: "No of Available Packs",
     width: 170,
   },
-  { field: "No_of_Packs_Needed", headerName: "No of Packs Used", width: 170 },
+  { field: "No_of_Packs_Used", headerName: "No of Packs Used", width: 170 },
   { field: "Technician_Name", headerName: "Technician Name", width: 170 },
   { field: "Lot_No", headerName: "Lot No", width: 130 },
   { field: "Expiry_Date", headerName: "Expiry Date", width: 130 },

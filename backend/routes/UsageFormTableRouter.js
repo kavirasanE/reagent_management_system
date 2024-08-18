@@ -7,6 +7,6 @@ dotenv.config();
 
 const UsageFormTable = express.Router();
 
-UsageFormTable.post("/createusageform",createUsageTableData)
+UsageFormTable.put("/createusageform/:id",createUsageTableData)
 
 export default UsageFormTable

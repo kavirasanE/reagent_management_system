@@ -24,12 +24,13 @@ const UsageForm = () => {
     Reagent_Name: ReagentTableData[Rownumber].Reagent_Name,
     Lot_No: ReagentTableData[Rownumber].Lot_No,
     Expiry_Date: ReagentTableData[Rownumber].Expiry_Date,
-    Stocks_Available: ReagentTableData[Rownumber].Total_Stocks,
-    No_of_Packs_Needed: 0,
+    Stocks_Available: ReagentTableData[Rownumber].Stocks_Available,
+    No_of_Packs_Used:0,
+    // Total_Stocks:ReagentTableData[Rownumber].Total_Stocks,
     Technician_Name: "",
   });
 
-  const [noofpacksused,setnoofpacksused] = useState(ReagentTableData[Rownumber].No_of_Packs_Needed)
+  const [noofpacksused,setnoofpacksused] = useState(ReagentTableData[Rownumber].No_of_Packs_Used)
 
   const handleReagentDataChange = (e) => {
     e.preventDefault();
@@ -44,17 +45,17 @@ const UsageForm = () => {
   const handleReagentSubmit = async (e) => {
     e.preventDefault();
     console.log(reagentData);
-    if (reagentData.No_of_Packs_Needed > reagentData.Stocks_Available) {
+    if (reagentData.No_of_Packs_Used > reagentData.Stocks_Available) {
       alert("Packs is not Available in the inventory ");
       return;
     } else {
       reagentData.Stocks_Available =
-        reagentData.Stocks_Available - reagentData.No_of_Packs_Needed;
-        reagentData.No_of_Packs_Needed = Number(reagentData.No_of_Packs_Needed) + Number(noofpacksused)
+        reagentData.Stocks_Available - reagentData.No_of_Packs_Used;
+        reagentData.No_of_Packs_Used = Number(reagentData.No_of_Packs_Used) + Number(noofpacksused)
     }
     try {
-      const ReagentEditData = await axios.post(
-        "http://localhost:9800/api/createusageform",
+      const ReagentEditData = await axios.put(
+        `http://localhost:9800/api/createusageform/${Rownumber+1}`,
         reagentData
       );
       if (ReagentEditData) {
@@ -160,13 +161,13 @@ const UsageForm = () => {
           </label>
           <TextField
             id="new-stock"
-            label="No of Packs Needed"
+            label="No_of_Packs_Used"
             type="number"
             variant="outlined"
             size="small"
             className=""
-            name="No_of_Packs_Needed"
-            value={reagentData.No_of_Packs_Needed}
+            name="No_of_Packs_Used"
+            value={reagentData.No_of_Packs_Used}
             onChange={(e) => {
               handleReagentDataChange(e);
             }}

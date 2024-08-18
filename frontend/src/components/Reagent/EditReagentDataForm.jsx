@@ -20,14 +20,16 @@ const EditReagentDataForm = () => {
   // );
 
   const [reagentData, setReagentData] = useState({
-    Analyte: ReagentTableData[Rownumber].Analyte ,
+    Analyte: ReagentTableData[Rownumber].Analyte,
     Reagent_Name: ReagentTableData[Rownumber].Reagent_Name,
     Lot_No: ReagentTableData[Rownumber].Lot_No,
     Expiry_Date: ReagentTableData[Rownumber].Expiry_Date,
-    No_of_Available_Packs: ReagentTableData[Rownumber].No_of_Available_Packs,
-    Stocks_Available: ReagentTableData[Rownumber].Total_Stocks,
-    new_stock: ReagentTableData[Rownumber].new_stock,
+    No_of_Packs_Used: ReagentTableData[Rownumber].No_of_Packs_Used,
+    Stocks_Available: ReagentTableData[Rownumber].Stocks_Available,
+    new_stock: 0,
+    Total_Stocks:ReagentTableData[Rownumber].Total_Stocks,
     Technician_Name: ReagentTableData[Rownumber].Technician_Name,
+
   });
 
   const handleReagentDataChange = (e) => {
@@ -42,12 +44,13 @@ const EditReagentDataForm = () => {
 
   const handleReagentSubmit = async (e) => {
     e.preventDefault();
-    console.log(reagentData, "sdvlkjn");
     if (reagentData) {
-      reagentData.Stocks_Available =
-        reagentData.Stocks_Available + Number(reagentData.new_stock);
-     
-      console.log(reagentData.Stocks_Available);
+
+      // reagentData.new_stock = 0;
+      reagentData.Total_Stocks =
+        reagentData.Total_Stocks + Number(reagentData.new_stock);
+      
+      console.log(reagentData);
     }
     try {
       const ReagentEditData = await axios.put(
@@ -160,7 +163,7 @@ const EditReagentDataForm = () => {
             size="small"
             className=""
             name="Stocks_Available"
-            value={reagentData.Stocks_Available}
+            value={reagentData.Total_Stocks}
             onChange={(e) => handleReagentDataChange(e)}
           />
         </p>

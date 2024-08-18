@@ -28,3 +28,5 @@ ON
     subquery.Lot_No = u.Lot_No AND subquery.LatestDate = u.CurrentDate;
     
     --  COALESCE(u.Stocks_Available, r.Stocks_Available) AS Stocks_Available, 
+    
+    
