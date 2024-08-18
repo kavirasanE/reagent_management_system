@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import axios from "axios";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -110,7 +111,6 @@ const rows = [
     col1: 356,
     col2: 16.0,
     col3: 49,
-
     col7: 40,
     col8: 45,
     col9: 22,
@@ -120,7 +120,6 @@ const rows = [
     col13: 16,
     col14: 7,
     col15: 10,
-
     col20: 27,
     col21: 11,
     col22: 24,
@@ -135,9 +134,61 @@ const rows = [
   },
 ];
 
-const augustDates = Array.from({ length: 31 }, (_, i) => i + 1);
-
+// const augustDates = Array.from({ length: 31 }, (_, i) => i + 1);
+const augustDates = [
+  "01",
+  "02",
+  "03",
+  "04",
+  "05",
+  "06",
+  "07",
+  "08",
+  "09",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
+  "22",
+  "23",
+  "24",
+  "25",
+  "26",
+  "27",
+  "28",
+  "29",
+  "30",
+  "31",
+];
+console.log(augustDates);
 export default function TestDoneTable() {
+  const [testDoneTableData, setTestDoneTableData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:9800/testdone/testdoneData"
+      );
+      if (response) {
+        console.log(response.data);
+        setTestDoneTableData(response.data);
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 200 }} aria-label="customized table">
@@ -145,6 +196,7 @@ export default function TestDoneTable() {
           <TableRow>
             <StyledTableCell>S.No</StyledTableCell>
             <StyledTableCell align="right">Analyte Name</StyledTableCell>
+            <StyledTableCell align="right">Month</StyledTableCell>
             {augustDates.map((data) => (
               <StyledTableCell align="right">{data}</StyledTableCell>
             ))}
@@ -164,21 +216,22 @@ export default function TestDoneTable() {
             </StyledTableRow>
           ))} */}
 
-          {rows.map((row, index) => (
-            <StyledTableRow key={row.name} c>
+          {testDoneTableData.map((row, index) => (
+            <StyledTableRow key={row.Analyte_Name} c>
               <StyledTableCell component="th" scope="row">
                 {index + 1}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.Analyte_Name}
               </StyledTableCell>
-              {Array.from({ length: 31 }, (_, index) => (
+              <StyledTableCell component="th" scope="row">
+                {row.Month}
+              </StyledTableCell>
+              {augustDates.map((date, index) => (
                 <StyledTableCell align="right" key={`col${index + 1}`}>
-                  {row[`col${index + 1}`]}
+                  {row[`col${date}`]} {/* Use the zero-padded date string */}
                 </StyledTableCell>
               ))}
-
-              
             </StyledTableRow>
           ))}
         </TableBody>
