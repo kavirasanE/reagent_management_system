@@ -20,16 +20,15 @@ const EditReagentDataForm = () => {
   // );
 
   const [reagentData, setReagentData] = useState({
-    Analyte: ReagentTableData[Rownumber].Analyte,
+    Analyte: ReagentTableData[Rownumber].Analyte ,
     Reagent_Name: ReagentTableData[Rownumber].Reagent_Name,
     Lot_No: ReagentTableData[Rownumber].Lot_No,
     Expiry_Date: ReagentTableData[Rownumber].Expiry_Date,
     No_of_Available_Packs: ReagentTableData[Rownumber].No_of_Available_Packs,
-    Stocks_Available: ReagentTableData[Rownumber].Stocks_Available,
+    Stocks_Available: ReagentTableData[Rownumber].Total_Stocks,
     new_stock: ReagentTableData[Rownumber].new_stock,
     Technician_Name: ReagentTableData[Rownumber].Technician_Name,
   });
-  
 
   const handleReagentDataChange = (e) => {
     e.preventDefault();
@@ -44,6 +43,12 @@ const EditReagentDataForm = () => {
   const handleReagentSubmit = async (e) => {
     e.preventDefault();
     console.log(reagentData, "sdvlkjn");
+    if (reagentData) {
+      reagentData.Stocks_Available =
+        reagentData.Stocks_Available + Number(reagentData.new_stock);
+     
+      console.log(reagentData.Stocks_Available);
+    }
     try {
       const ReagentEditData = await axios.put(
         `http://localhost:9800/api/updatereagent/${Rownumber + 1}`,
@@ -127,7 +132,7 @@ const EditReagentDataForm = () => {
             onChange={(date) => handleReagentDataChange(date)}
           />
         </p>
-          {/* <p className="flex justify-between items-center gap-4 ">
+        {/* <p className="flex justify-between items-center gap-4 ">
             <label className="text-sm font-semibold uppercase ">
               No of Available Packs
             </label>
@@ -190,7 +195,7 @@ const EditReagentDataForm = () => {
         </p>
         <p className="flex justify-between items-center gap-4">
           <label className="text-sm font-semibold uppercase ">
-           Current Date
+            Current Date
           </label>
           <TextField
             disabled

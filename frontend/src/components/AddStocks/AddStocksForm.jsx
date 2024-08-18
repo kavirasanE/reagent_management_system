@@ -44,9 +44,11 @@ const AddStocksForm = () => {
 
   const handleReagentSubmit = async (e) => {
     e.preventDefault();
-      reagentData.Stocks_Available = reagentData.new_stock
+    // console.log(typeof reagentData.Stocks_Available);
+    reagentData.Stocks_Available = Number(reagentData.new_stock);
+    // reagentData.Stocks_Available = 0
+    // console.log(typeof reagentData.Stocks_Available);
 
-    
     console.log(reagentData);
     console.log(inputValue);
     // setReagentData({

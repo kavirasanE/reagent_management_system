@@ -5,7 +5,7 @@ SELECT
     r.Lot_No,
     r.Technician_Name,
     r.Expiry_Date,
-    COALESCE(u.Stocks_Available, r.Stocks_Available) AS Stocks_Available,
+   COALESCE(u.Stocks_Available, r.Stocks_Available) AS Stocks_Available,
     COALESCE(u.No_of_Packs_Needed, 0) AS No_of_Packs_Needed,
     COALESCE(u.CurrentDate, r.currentdate) AS CurrentDate
 FROM 
@@ -26,3 +26,5 @@ LEFT JOIN
     usagetable u
 ON 
     subquery.Lot_No = u.Lot_No AND subquery.LatestDate = u.CurrentDate;
+    
+    --  COALESCE(u.Stocks_Available, r.Stocks_Available) AS Stocks_Available, 

@@ -18,10 +18,10 @@ const DataProvider = ({ children }) => {
       console.log(err);
     }
   };
-  
 
   useEffect(() => {
     reagentFetchData();
+    console.log(ReagentTableData);
   }, []);
 
   return (

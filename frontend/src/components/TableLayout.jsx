@@ -7,15 +7,17 @@ const columns = [
   { field: "id", headerName: "S.NO", width: 70 },
   { field: "Analyte", headerName: "Analyte", width: 130 },
   { field: "Reagent_Name", headerName: "Reagent Name", width: 170 },
-  { field: "Technician_Name", headerName: "Technician Name", width: 170 },
-  { field: "Lot_No", headerName: "Lot No", width: 130 },
-  { field: "Expiry_Date", headerName: "Expiry Date", width: 130 },
+  { field: "Total_Stocks", headerName: "Total Stocks Arrived", width: 170 },
   {
     field: "Stocks_Available",
     headerName: "No of Available Packs",
     width: 170,
   },
   { field: "No_of_Packs_Needed", headerName: "No of Packs Used", width: 170 },
+  { field: "Technician_Name", headerName: "Technician Name", width: 170 },
+  { field: "Lot_No", headerName: "Lot No", width: 130 },
+  { field: "Expiry_Date", headerName: "Expiry Date", width: 130 },
+  
   { field: "CurrentDate", headerName: "Date & Time", width: 170 },
 
 ];

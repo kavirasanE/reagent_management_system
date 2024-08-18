@@ -24,11 +24,12 @@ const UsageForm = () => {
     Reagent_Name: ReagentTableData[Rownumber].Reagent_Name,
     Lot_No: ReagentTableData[Rownumber].Lot_No,
     Expiry_Date: ReagentTableData[Rownumber].Expiry_Date,
-    Stocks_Available: ReagentTableData[Rownumber].Stocks_Available,
+    Stocks_Available: ReagentTableData[Rownumber].Total_Stocks,
     No_of_Packs_Needed: 0,
     Technician_Name: "",
   });
 
+  const [noofpacksused,setnoofpacksused] = useState(ReagentTableData[Rownumber].No_of_Packs_Needed)
 
   const handleReagentDataChange = (e) => {
     e.preventDefault();
@@ -43,14 +44,15 @@ const UsageForm = () => {
   const handleReagentSubmit = async (e) => {
     e.preventDefault();
     console.log(reagentData);
-       if(reagentData.No_of_Packs_Needed > reagentData.Stocks_Available) {
-        alert("Packs is not Available in the inventory ")
-        return
-       }else{
-        reagentData.Stocks_Available = reagentData.Stocks_Available - reagentData.No_of_Packs_Needed
-       }
+    if (reagentData.No_of_Packs_Needed > reagentData.Stocks_Available) {
+      alert("Packs is not Available in the inventory ");
+      return;
+    } else {
+      reagentData.Stocks_Available =
+        reagentData.Stocks_Available - reagentData.No_of_Packs_Needed;
+        reagentData.No_of_Packs_Needed = Number(reagentData.No_of_Packs_Needed) + Number(noofpacksused)
+    }
     try {
-      
       const ReagentEditData = await axios.post(
         "http://localhost:9800/api/createusageform",
         reagentData

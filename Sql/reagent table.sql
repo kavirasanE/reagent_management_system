@@ -2,6 +2,8 @@ SELECT * FROM reagent_inventory.reagentdata;
 
 show create table reagentdata;
 
+describe reagentdata;
+
 truncate  reagentdata;
 SET SQL_SAFE_UPDATES = 1;
 describe reagent_inventory.reagentdata;
