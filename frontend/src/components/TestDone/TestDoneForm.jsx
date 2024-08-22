@@ -56,6 +56,7 @@ export default function TestDoneForm() {
       );
       if (sendTestDone) {
         console.log("message successfully send");
+        setOpen(false);
       }
     } catch (err) {
       console.log(err.message);

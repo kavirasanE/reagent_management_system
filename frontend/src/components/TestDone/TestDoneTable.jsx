@@ -168,6 +168,7 @@ const augustDates = [
   "30",
   "31",
 ];
+
 console.log(augustDates);
 export default function TestDoneTable() {
   const [testDoneTableData, setTestDoneTableData] = useState([]);
@@ -215,7 +216,6 @@ export default function TestDoneTable() {
               <StyledTableCell align="right">{row.date}</StyledTableCell>
             </StyledTableRow>
           ))} */}
-
           {testDoneTableData.map((row, index) => (
             <StyledTableRow key={row.Analyte_Name} c>
               <StyledTableCell component="th" scope="row">
