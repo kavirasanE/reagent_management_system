@@ -29,7 +29,7 @@ const createTestDoneTable = (req, res) => {
   }); 
 
   const CreateNewTestForm = (datas, col) => {
-    const query = `INSERT INTO Test_Done (Analyte_Name, col${col} ,Month, Year) VALUES (?,?,?,?);`;
+    const query = `INSERT INTO Test_Done (Analyte_Name, col${col} ,Month, Year) VALUES (?);`;
     dbConfig.query(query, [datas], (err, data) => {
       if (err) {
         console.log(err.message);
@@ -64,8 +64,6 @@ const createTestDoneTable = (req, res) => {
     console.log(updateQuery,"update the query")
     console.log(datas); // Log the data being passed for debugging
 
-    
-    
     dbConfig.query(updateQuery, [...datas], (err, data) => {
         if (err) {
             console.log(err.message);

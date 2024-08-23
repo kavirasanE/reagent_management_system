@@ -1,4 +1,3 @@
-import expressAsyncHandler from "express-async-handler";
 import dbConfig from "../dbConfig.js";
 import bcryptjs from "bcryptjs";
 
