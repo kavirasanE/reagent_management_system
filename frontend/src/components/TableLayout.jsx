@@ -18,7 +18,11 @@ const columns = [
   { field: "Lot_No", headerName: "Lot No", width: 130 },
   { field: "Expiry_Date", headerName: "Expiry Date", width: 130 },
   
+<<<<<<< HEAD
   // { field: "CurrentDate", headerName: "Date & Time", width: 170 },
+=======
+  { field: "CurrentDate", headerName: "Date & Time", width: 170 },
+>>>>>>> 64ae26d1766c226aef40365ac21aca636b8094fb
 
 ];
 

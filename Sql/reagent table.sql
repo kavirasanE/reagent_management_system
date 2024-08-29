@@ -1,5 +1,6 @@
 SELECT * FROM reagent_inventory.reagentdata;
 
+<<<<<<< HEAD
 CREATE DATABASE reagent_inventory;
 SHOW DATABASES;
 USE reagent_inventory;
@@ -61,6 +62,8 @@ CREATE TABLE reagentdata (
 
 
 
+=======
+>>>>>>> 64ae26d1766c226aef40365ac21aca636b8094fb
 show create table reagentdata;
 
 describe reagentdata;
