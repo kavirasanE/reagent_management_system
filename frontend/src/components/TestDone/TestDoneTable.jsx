@@ -136,7 +136,6 @@ const rows = [
 
 // const augustDates = Array.from({ length: 31 }, (_, i) => i + 1);
 const augustDates = [
-<<<<<<< HEAD
   "1",
   "2",
   "3",
@@ -146,17 +145,6 @@ const augustDates = [
   "7",
   "8",
   "9",
-=======
-  "01",
-  "02",
-  "03",
-  "04",
-  "05",
-  "06",
-  "07",
-  "08",
-  "09",
->>>>>>> 64ae26d1766c226aef40365ac21aca636b8094fb
   "10",
   "11",
   "12",

@@ -12,11 +12,7 @@ const EditReagentDataForm = () => {
   const navigate = useNavigate();
 
   let Rownumber = parseInt(ReagentTableRowNo.trim(), 10) - 1;
-<<<<<<< HEAD
   console.log(ReagentTableData[Rownumber]);
-=======
-  // console.log(ReagentTableData[Rownumber]);
->>>>>>> 64ae26d1766c226aef40365ac21aca636b8094fb
   const options = ["Glucose", "analyte2", "analyte3", "analyte4"];
 
   // const [inputValue, setInputValue] = useState(

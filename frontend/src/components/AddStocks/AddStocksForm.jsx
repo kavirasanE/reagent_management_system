@@ -25,11 +25,7 @@ const AddStocksForm = () => {
   const [reagentData, setReagentData] = useState({
     Reagent_Name: "",
     Lot_No: "",
-<<<<<<< HEAD
     Expiry_Date: new Date(),
-=======
-    Expiry_Date: "",
->>>>>>> 64ae26d1766c226aef40365ac21aca636b8094fb
     Stocks_Available: 0,
     new_stock: 0,
     Technician_Name: "",

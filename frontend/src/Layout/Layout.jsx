@@ -18,8 +18,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, Icon } from "@mui/material";
 import ReagentLogo from "../assets/logo.png";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import BackupTableIcon from "@mui/icons-material/BackupTable";
+import BiotechIcon from "@mui/icons-material/Biotech";
+import InfoIcon from "@mui/icons-material/Info";
+import AddchartIcon from "@mui/icons-material/Addchart";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 
 const drawerWidth = 200;
 
@@ -64,21 +70,25 @@ function Layout({ props, children }) {
     {
       id: 1,
       title: "Dashboard",
+      icon: <DashboardIcon />,
       path: "/",
     },
     {
       id: 2,
       title: "Reagent Table",
+      icon: <BackupTableIcon />,
       path: "/reagenttable",
     },
     {
       id: 3,
       title: "Test Done",
+      icon: <BiotechIcon />,
       path: "/testdone",
     },
     {
       id: 4,
       title: "About RIMS",
+      icon: <InfoIcon />,
       path: "/aboutris",
     },
   ];
@@ -87,11 +97,13 @@ function Layout({ props, children }) {
     {
       id: 1,
       title: "Add Stocks",
+      icon: <AddchartIcon />,
       path: "/addstocks",
     },
     {
       id: 2,
       title: "Admin",
+      icon: <AdminPanelSettingsIcon />,
       path: "/admin",
     },
   ];
@@ -105,9 +117,7 @@ function Layout({ props, children }) {
           <Link to={text.path} className="flex w-full" key={index}>
             <ListItem key={text.id} disablePadding>
               <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
+                <ListItemIcon>{text.icon}</ListItemIcon>
                 <ListItemText primary={text.title} />
               </ListItemButton>
             </ListItem>
@@ -120,9 +130,7 @@ function Layout({ props, children }) {
           <Link to={text.path} key={index}>
             <ListItem key={text} disablePadding>
               <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
+                <ListItemIcon>{text.icon}</ListItemIcon>
                 <ListItemText primary={text.title} />
               </ListItemButton>
             </ListItem>
@@ -164,16 +172,16 @@ function Layout({ props, children }) {
               fontWeight="semibold"
               textAlign="center"
             >
-              Reagent Inventory Management System 
+              Reagent Inventory Management System
             </Typography>
-            <Link to="/usageform">
+            {/* <Link to="/usageform">
               <button
                 // onClick={handleTestDataForm}
                 className="p-2 drop-shadow-xl shadow-xl bg-gray-200 text-black hover:scale-95 font-bold rounded-sm "
               >
                 Usage Form
               </button>
-            </Link>
+            </Link> */}
           </div>
         </Toolbar>
       </AppBar>
@@ -182,8 +190,7 @@ function Layout({ props, children }) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
+        {/* <Drawer
           container={container}
           variant="temporary"
           open={mobileOpen}
@@ -201,7 +208,7 @@ function Layout({ props, children }) {
           }}
         >
           {drawer}
-        </Drawer>
+        </Drawer> */}
         <Drawer
           variant="permanent"
           sx={{
@@ -209,17 +216,20 @@ function Layout({ props, children }) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              marginTop: "5px",
+              marginTop: "10px",
             },
           }}
           open
         >
-          <p className="absolute font-bold text-xl">
-            <img src={ReagentLogo} className="w-40 h-20 object-cover mb-2 " />
-          </p>
+          <img
+            src={ReagentLogo}
+            className=" absolute right-4 w-40 h-16 mb-10 object-cover  "
+          />
+
           {drawer}
         </Drawer>
       </Box>
+
       <Box
         component="main"
         sx={{
