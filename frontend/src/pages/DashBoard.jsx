@@ -8,7 +8,7 @@ const DashBoard = () => {
     <div>
       <div className="flex flex-col md:flex-row gap-5 justify-between">
         <DashboardFunctions />
-        <DashboardData/>  
+        {/* <DashboardData/>   */}
       </div>
       {/* <div>
         <DashboardTable />

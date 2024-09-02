@@ -26,6 +26,8 @@ import BiotechIcon from "@mui/icons-material/Biotech";
 import InfoIcon from "@mui/icons-material/Info";
 import AddchartIcon from "@mui/icons-material/Addchart";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import Avatar from '@mui/material/Avatar';
+import { deepOrange } from '@mui/material/colors';
 
 const drawerWidth = 200;
 
@@ -182,6 +184,7 @@ function Layout({ props, children }) {
                 Usage Form
               </button>
             </Link> */}
+              <Avatar sx={{ bgcolor: deepOrange[500] }}>NA</Avatar>
           </div>
         </Toolbar>
       </AppBar>

@@ -14,8 +14,8 @@ const createTestDoneTable = (req, res) => {
   console.log(Month);
   const values = [req.body.Analyte_Name, req.body.TestDoneCount, Month, year];
   const existQuery =
-    "SELECT EXISTS(SELECT 1 FROM test_done WHERE Month = ?) AS month_exists;";
-  const existValue = [Month];
+    "SELECT EXISTS(SELECT 1 FROM test_done WHERE Month = ? AND Analyte_Name = ? ) AS month_exists;";
+  const existValue = [Month,req.body.Analyte_Name];
   dbConfig.query(existQuery, existValue, (err, data) => {
     if (err) {
       return res.status(400).send(err.message);
