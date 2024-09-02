@@ -76,4 +76,4 @@ const LineGraph = () => {
   );
 };
 
-export default LineGraph;
+export default LineGraph
