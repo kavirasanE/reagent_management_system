@@ -67,8 +67,8 @@ const LineGraph = () => {
   };
 
   return (
-    <div >
-      <h2 >Line Chart Example</h2>
+    <div>
+      <h2>Line Chart Example</h2>
       <div className="w-[500px]  object-fill">
         <Line data={data} options={options} />
       </div>
@@ -76,4 +76,15 @@ const LineGraph = () => {
   );
 };
 
-export default LineGraph
+export default LineGraph;
+
+// export const FETCH_DATA_REQUEST = 'FETCH_DATA_REQUEST';
+// export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
+// export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
+
+// const DATA_STATUS = {
+//   FETCH_DATA_REQUEST :'FETCH_DATA_REQUEST';
+//    FETCH_DATA_SUCCESS : 'FETCH_DATA_SUCCESS';
+//  FETCH_DATA_FAILURE : 'FETCH_DATA_FAILURE';
+// }
+// export default DATA_STATUS;
